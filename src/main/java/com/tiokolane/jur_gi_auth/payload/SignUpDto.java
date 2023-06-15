@@ -1,9 +1,15 @@
 package com.tiokolane.jur_gi_auth.payload;
 
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class SignUpDto {
     private String name;
     private String username;
