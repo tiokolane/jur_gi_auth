@@ -1,7 +1,8 @@
 package com.tiokolane.jur_gi_auth.repository;
 
-import com.tiokolane.jur_gi_auth.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.tiokolane.jur_gi_auth.model.Role;
 
 import java.util.Optional;
 

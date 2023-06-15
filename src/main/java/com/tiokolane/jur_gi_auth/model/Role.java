@@ -1,4 +1,4 @@
-package com.tiokolane.jur_gi_auth.entity;
+package com.tiokolane.jur_gi_auth.model;
 
 import lombok.Getter;
 import lombok.Setter;

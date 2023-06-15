@@ -1,7 +1,7 @@
 package com.tiokolane.jur_gi_auth.controller;
 
-import com.tiokolane.jur_gi_auth.entity.Role;
-import com.tiokolane.jur_gi_auth.entity.User;
+import com.tiokolane.jur_gi_auth.model.Role;
+import com.tiokolane.jur_gi_auth.model.User;
 import com.tiokolane.jur_gi_auth.payload.LoginDto;
 import com.tiokolane.jur_gi_auth.payload.SignUpDto;
 import com.tiokolane.jur_gi_auth.repository.RoleRepository;

@@ -1,7 +1,8 @@
-package com.tiokolane.jur_gi_auth.security;
+package com.tiokolane.jur_gi_auth.service;
 
-import com.tiokolane.jur_gi_auth.entity.User;
+import com.tiokolane.jur_gi_auth.model.User;
 import com.tiokolane.jur_gi_auth.repository.UserRepository;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,4 +37,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                 user.getPassword(),
                 authorities);
     }
+
+    
 }
