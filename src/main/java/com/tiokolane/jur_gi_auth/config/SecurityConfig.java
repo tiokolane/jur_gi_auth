@@ -50,6 +50,7 @@ public class SecurityConfig {
                                  AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
+    
 
    @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

@@ -2,7 +2,6 @@ package com.tiokolane.jur_gi_auth.service;
 
 import java.util.Optional;
 
-import com.tiokolane.jur_gi_auth.model.PasswordResetToken;
 import com.tiokolane.jur_gi_auth.model.User;
 import com.tiokolane.jur_gi_auth.payload.LoginDto;
 import com.tiokolane.jur_gi_auth.payload.SignUpDto;

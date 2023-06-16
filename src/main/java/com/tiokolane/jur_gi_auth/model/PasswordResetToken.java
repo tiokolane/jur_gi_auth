@@ -1,8 +1,5 @@
 package com.tiokolane.jur_gi_auth.model;
 
-import java.util.Date;  
-import java.util.Optional;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +14,6 @@ import lombok.Data;
 @Entity
 public class PasswordResetToken {
 
-    private static final int EXPIRATION = 60 * 24;
  
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +25,5 @@ public class PasswordResetToken {
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
  
-    private Date expiryDate = new Date();
 
 }
