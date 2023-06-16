@@ -3,7 +3,6 @@ package com.tiokolane.jur_gi_auth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -30,8 +29,6 @@ import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
         scheme = "bearer"
 )
 public class SecurityConfig {
-    private UserDetailsService userDetailsService;
-
     private JwtAuthenticationEntryPoint authenticationEntryPoint;
 
     private JwtAuthenticationFilter authenticationFilter;
@@ -39,7 +36,6 @@ public class SecurityConfig {
      public SecurityConfig(UserDetailsService userDetailsService,
                           JwtAuthenticationEntryPoint authenticationEntryPoint,
                           JwtAuthenticationFilter authenticationFilter){
-        this.userDetailsService = userDetailsService;
         this.authenticationEntryPoint = authenticationEntryPoint;
         this.authenticationFilter = authenticationFilter;
     }
@@ -64,7 +60,7 @@ public class SecurityConfig {
                         authorize
                                 // .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
                                 //.requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
-                                .requestMatchers("/api/v1/auth/**").permitAll()
+                                .requestMatchers("/api/auth/**").permitAll()
                                 .requestMatchers("/swagger-ui/**").permitAll()
                                 .requestMatchers("/v3/api-docs/**").permitAll()
                                 .anyRequest().authenticated()

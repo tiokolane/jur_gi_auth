@@ -2,17 +2,17 @@ package com.tiokolane.jur_gi_auth.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class BlogAPIException extends RuntimeException {
+public class JurGiAPIException extends RuntimeException {
 
     private HttpStatus status;
     private String message;
 
-    public BlogAPIException(HttpStatus status, String message) {
+    public JurGiAPIException(HttpStatus status, String message) {
         this.status = status;
         this.message = message;
     }
 
-    public BlogAPIException(String message, HttpStatus status, String message1) {
+    public JurGiAPIException(String message, HttpStatus status, String message1) {
         super(message);
         this.status = status;
         this.message = message1;
