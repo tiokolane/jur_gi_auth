@@ -1,6 +1,7 @@
 package com.tiokolane.jur_gi_auth.controller;
 
 import com.tiokolane.jur_gi_auth.exception.ResourceNotFoundException;
+import com.tiokolane.jur_gi_auth.model.EmailDetails;
 import com.tiokolane.jur_gi_auth.model.User;
 import com.tiokolane.jur_gi_auth.payload.JWTAuthResponse;
 import com.tiokolane.jur_gi_auth.payload.LoginDto;
@@ -9,6 +10,7 @@ import com.tiokolane.jur_gi_auth.payload.PasswordRequestChangeDto;
 import com.tiokolane.jur_gi_auth.payload.SignUpDto;
 import com.tiokolane.jur_gi_auth.repository.UserRepository;
 import com.tiokolane.jur_gi_auth.service.AuthService;
+import com.tiokolane.jur_gi_auth.service.EmailService;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -27,6 +29,7 @@ public class AuthController {
     private AuthService authService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired private EmailService emailService;
 
     public AuthController(AuthService authService) {
         this.authService = authService;
@@ -63,7 +66,14 @@ public class AuthController {
         // return new GenericResponse(
         // messages.getMessage("message.resetPasswordEmail", null, 
         // request.getLocale()));`
-        return new ResponseEntity<>(token, HttpStatus.CREATED);
+        EmailDetails details = new EmailDetails();
+        details.setSubject("Password Reset");
+        details.setMsgBody("Veuillez utiliser ce token pour changer votre mot de passe: "+token);
+        details.setRecipient(passwordDto.getEmail());
+        String status
+            = emailService.sendSimpleMail(details);
+        
+        return new ResponseEntity<>(status+" Token envoyé par email", HttpStatus.CREATED);
 
     }
     @PostMapping("/changePassword")
@@ -80,6 +90,12 @@ public class AuthController {
             authService.changeUserPassword(user, passwordDto.getNewPassword());
             String message = "Mot de passe changé avec succes";
             authService.deletePasswordResetToken(passwordDto.getToken());
+            EmailDetails details = new EmailDetails();
+            details.setSubject("Password Changed");
+            details.setMsgBody("Vous venez de changer votre mot de passe  Veuillez vous connecter");
+            details.setRecipient(user.getEmail());
+            String status
+            = emailService.sendSimpleMail(details);
             return new  ResponseEntity<>(message, HttpStatus.OK);
         } else {
            throw new ResourceNotFoundException();

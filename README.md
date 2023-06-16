@@ -27,3 +27,12 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 ```shell
 mvn spring-boot:run
 ```
+
+
+Swagger
+http://localhost:8080/swagger-ui/index.html
+
+Open API
+
+http://localhost:8080/v3/api-docs
+
