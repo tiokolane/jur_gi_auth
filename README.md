@@ -36,3 +36,6 @@ Open API
 
 http://localhost:8080/v3/api-docs
 
+
+
+ADD ROLE_USER to mysql table ROLE
